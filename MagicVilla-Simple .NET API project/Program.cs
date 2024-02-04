@@ -1,4 +1,6 @@
+using MagicVilla_Simple_.NET_API_project.Data;
 using MagicVilla_Simple_.NET_API_project.logging;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,10 @@ builder.Services.AddControllers(option =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<ILogging, LoggingV2>();  //Cinfigure custom logging module in services
+builder.Services.AddDbContext<ApplicationDbContext>(option =>
+{
+    option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
+});
 
 var app = builder.Build();
 
