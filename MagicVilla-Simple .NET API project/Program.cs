@@ -1,7 +1,9 @@
+using MagicVilla_Simple_.NET_API_project;
 using MagicVilla_Simple_.NET_API_project.Data;
 using MagicVilla_Simple_.NET_API_project.logging;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,6 +16,7 @@ builder.Services.AddControllers(option =>
 {
     //option.ReturnHttpNotAcceptable = true;
 }).AddNewtonsoftJson().AddXmlDataContractSerializerFormatters();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -22,6 +25,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
 });
+builder.Services.AddAutoMapper(typeof(MappingConfig));
 
 var app = builder.Build();
 
