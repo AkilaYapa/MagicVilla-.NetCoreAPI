@@ -7,5 +7,6 @@ namespace MagicVilla_Simple_.NET_API_project.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options) { }
         public DbSet<Villa> Villas { get; set; }
+        public DbSet<VillaNumber> villaNumbers { get; set; }
     }
 }

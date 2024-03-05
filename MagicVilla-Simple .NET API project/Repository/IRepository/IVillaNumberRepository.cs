@@ -1,10 +1,9 @@
 ﻿using MagicVilla_Simple_.NET_API_project.Models;
-using System.Linq.Expressions;
 
 namespace MagicVilla_Simple_.NET_API_project.Repository.IRepository
 {
-    public interface IVillaRepository : IRepository<Villa>
+    public interface IVillaNumberRepository :IRepository<VillaNumber>
     {
-        Task<Villa> UpdateAsync(Villa entity);
+        Task<VillaNumber> UpdateAsync(VillaNumber entity);
     }
 }
